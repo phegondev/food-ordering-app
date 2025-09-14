@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .success-icon {
+            color: #28a745;
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #28a745;
+            margin: 0;
+        }
+        .order-details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .detail-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+        .footer {
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="success-icon">✓</div>
+        <h1>Payment Successful</h1>
+    </div>
+
+    <p>Dear <span th:text="${customerName}">Customer</span>,</p>
+    <p>Thank you for your payment! Your order has been confirmed and is being processed.</p>
+
+    <div class="order-details">
+        <div class="detail-row">
+            <span class="detail-label">Order Number:</span>
+            <span th:text="${orderId}"></span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Transaction ID:</span>
+            <span th:text="${transactionId}"></span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Payment Date:</span>
+            <span th:text="${paymentDate}"></span>
+        </div>
+        <div class="detail-row">
+            <span class="detail-label">Amount Paid:</span>
+            <span th:text="${amount}"></span>
+        </div>
+    </div>
+
+    <p>We'll notify you when your order ships. You can check your order status anytime in your account.</p>
+
+    <a class="button" th:href="@{${frontendBaseUrl} + '/my-order-history'}">View Your Orders</a>
+
+
+    <div class="footer">
+        <p>If you have any questions, contact us at support@phegonfood.com</p>
+        <p>© <span th:text="${currentYear}">2025</span> Phegon Food. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>
